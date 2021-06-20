@@ -2,6 +2,9 @@
 
 # Getting Started with Create React App
 
+# 
+[deploy on heroku](https://react-reasy.herokuapp.com/)
+
 ## UML
 ![uml](./base.png)
 
