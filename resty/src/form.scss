@@ -1,0 +1,40 @@
+$red: red;
+$black: black;
+
+$text-align:center;
+
+
+input[type="url"] {
+    
+    background-color: paleturquoise;
+
+}
+
+button#btn {
+    width: 100px;
+    height: 25px;
+}
+
+button#click {
+    width: 60px;
+    background-color: $red;
+    margin: 10px 10px;
+
+   
+}
+
+span {
+  color: $red;
+  word-spacing: 20px;
+}
+
+section {
+    border: 2px solid black;
+  
+    height: 300px;
+    width: 85%;
+    text-align: center;
+    background-color: lightcyan;
+}
+
+
