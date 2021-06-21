@@ -3,10 +3,10 @@
 # Getting Started with Create React App
 
 # 
-[deploy on heroku](https://react-reasy.herokuapp.com/)
+[deploy on heroku](https://resty-prop-and-state.herokuapp.com/)
 
 ## UML
-![uml](./base.png)
+![uml](./props_and_state.png)
 
 ## How can test the app 
 

@@ -12,7 +12,7 @@ class Results extends React.Component {
         
         return (
           
-            <>
+            <React.Fragment>
 {          
             <div id='data'>
                         <ReactJson src={this.props.test.headers} theme="tomorrow"  name='Headers'/>
@@ -22,7 +22,7 @@ class Results extends React.Component {
               
 
             }
-           </>
+           </React.Fragment>
         )
     }
 }
