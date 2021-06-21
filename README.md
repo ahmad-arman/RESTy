@@ -3,7 +3,9 @@
 # Getting Started with Create React App
 
 # 
-[deploy on heroku](https://resty-prop-and-state.herokuapp.com/)
+[deploy on heroku](https://resty-prop-and-state.herokuapp.com/) <br>
+[pull request](https://github.com/ahmad-arman/RESTy-/pull/4)
+
 
 ## UML
 ![uml](./props_and_state.png)
