@@ -1,8 +1,10 @@
 import { span } from 'prelude-ls';
 import React from 'react';
 import './form.scss';
+import superagent from 'superagent';
 let methodGlobal='';
 let urlGlobal='';
+let error =''
 class Form extends React.Component {
 
     constructor(props){
@@ -10,8 +12,42 @@ class Form extends React.Component {
         this.state ={
             method:"",
             url:""
+          
         }
 
+    }
+    handlerSubmit = async e =>{
+        e.preventDefault();
+        // let raw = await fetch(urlGlobal)
+        
+        //     let data =await raw.json();
+            let ahmad =await superagent.get(urlGlobal)
+          
+        //  const count = data.count;
+        //  const results = {
+        //  Headers: { 'Content-Type': 'application/json' },
+        //  Response:data};
+        //     this.props.handler(results);
+            // await  console.log(ahmad,'ahmad77777777777777777777777777777777777777777777777')
+       
+            this.props.handler( ahmad.body.results, ahmad.body.count, ahmad.body.next ,ahmad.headers);
+
+       
+            // if( methodGlobal === "Get"){
+            //     console.log('--------------',data);
+            //     // this.setState({ count:data.count ,results:data.results });
+              
+    
+            // }else{
+              
+            //     this.setState({ method:methodGlobal ,url:urlGlobal });
+            // }
+
+      
+      
+           
+
+           
     }
     handlerURL = e =>{
         urlGlobal = e.target.value;
@@ -44,9 +80,9 @@ class Form extends React.Component {
         return (
             <main>
                
-                <form action="">
+                <form action="" method="Get">
                 <label htmlFor="">URL :</label> 
-                <input type="url" onChange={this.handlerURL} /> <button onClick={this.handlerBtn} id="btn">Go</button> 
+                <input type="url" onChange={this.handlerURL} /> <button onClick={this.handlerSubmit} id="btn">Go</button> 
     
                 <br></br>
                 {/* <input type="radio" onSelect={this.handlerSelect} id="get"  name="meth" value="get"/> <label htmlFor="">Get</label>
@@ -61,7 +97,17 @@ class Form extends React.Component {
 
                 </form>
                 <section>
-                    <span>{` ${this.state.method}    ` } </span> <span> { `${  this.state.url   }`}</span>
+                    <span>{` ${this.state.method}    ` } </span> <span> { `${  this.state.url   } `}</span> {`${  error   } `}<span>
+
+                    </span>
+                    {/* <div>
+                        { `${this.state.count}  `   }
+                    </div> */}
+
+                    {/* <div>
+                        { `${this.state.results}  `   }
+                    </div> */}
+
                     
                 </section>
 
