@@ -4,7 +4,8 @@
 
 # 
 [deploy on heroku](https://resty-prop-and-state.herokuapp.com/) <br>
-[pull request](https://github.com/ahmad-arman/RESTy-/pull/4)
+[pull request](https://github.com/ahmad-arman/RESTy-/pull/4) <br>
+[gh-pages](https://ahmad-arman.github.io/RESTy/)<br>
 
 
 ## UML
