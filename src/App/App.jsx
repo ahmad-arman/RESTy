@@ -1,10 +1,10 @@
 
 import './App.scss';
 import React from 'react';
-import Header from './header';
-import Footer from './footer';
-import Form from './form';
-import Results from './results';
+import Header from '../Header/header';
+import Footer from '../Footer/footer';
+import Form from '../Form/form';
+import Results from '../Result/results';
 
 // function App() {
 //  }
