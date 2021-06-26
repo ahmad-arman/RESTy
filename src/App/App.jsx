@@ -5,53 +5,84 @@ import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import Form from '../Form/form';
 import Results from '../Result/results';
+import If from '../if/if';
+import Else from '../else/else';
+import Loading from '../loading/loading'
+import History from '../history/history';
 
-// function App() {
-//  }
 
 
-//   return (
-//    <React.Fragment>
-//    <Header />
-//    <Form />
-//    <Footer />
-   
-//    </React.Fragment>
-//   )
-// }
+
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     
     this.state = {
-    
-      // results:"",
-      count : 0,
-      results:{},
+      headers:{},
+     
+      flag: false,
+      loading: true,
+      // count : 0,
+      // results:{},
       url:'',
-      headers:{}
+      method :'',
+      save : JSON.parse(localStorage.getItem('save')),
+      results:{},
+     
   }
   }
 
-  handleForm = (results,count,url,headers) => {
-    console.log('from the parent handler', results);
+  handleForm = (headers,results,method,url,flag ) => {
+    console.log('from the parent handler', headers,results,method,url,flag);
     console.log('************',results);
-    this.setState({results,count,url,headers });
-}
+    this.setState({headers,results,method,url,flag });
+  }
+
+  toggle = () => {
+    //if true then return false else return true
+
+    this.setState({ loading: !this.state.flag });
+    console.log('*************************',!this.state.flag )
+  }
+
+  // handlers =()=>{
+
+
+  // }
 
   render(){
     return (
       <React.Fragment>
       <Header />
-      <Form  handler={this.handleForm}/>
-      <Results  test={this.state}/>
+      <Form  handler={this.handleForm} toggle={this.toggle}/>
+      {/* <Loading /> */}
+      <If condition ={this.state.flag}>
+     
+     <Results  test={this.state}  />
+     <Loading />
+    
+      </If>
+      <Else  condition ={this.state.flag}>
+ 
+      <Loading />
+
+        
+      </Else>
+      <History />
+      
       <Footer />
+     
+     
    
     </React.Fragment>
 
     )
   }
 }
+
+
+
 
 export default App;
