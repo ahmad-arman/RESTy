@@ -8,7 +8,7 @@ class Results extends React.Component {
  
 
     render() {
-        // console.log(this.props.test,'99999999999999999999999999999')
+        console.log(this.props.test,'99999999999999999999999999999')
         
         return (
            

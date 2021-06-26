@@ -1,10 +1,39 @@
-import { span } from 'prelude-ls';
+// import { span } from 'prelude-ls';
 import React from 'react';
 import './form.scss';
-import superagent from 'superagent';
+// import superagent from 'superagent';
+import axios from 'axios'; 
+import Loader from 'react-loader-spinner'
+
 let methodGlobal='';
 let urlGlobal='';
 let error =''
+
+let history = [];
+
+function save(){
+    let saved = getData();
+   
+    if(history.length === 0 || history.length === 1 ){
+        for(let i in saved){
+            history.unshift(saved[i])
+        }
+    }
+    localStorage.setItem('save', JSON.stringify(history));
+    
+}
+function  getData(){
+    let information = localStorage.getItem('save');
+    if(information){
+        information = JSON.parse(information)
+        console.log(information)
+        return information;
+    }else {return []}
+}
+
+
+
+
 class Form extends React.Component {
 
     constructor(props){
@@ -15,9 +44,26 @@ class Form extends React.Component {
           
         }
 
+
     }
+    // async componentDidMount() {
+    //     // POST request using axios with async/await
+    //     const article = { title: 'React POST Request Example' };
+    //     const response = await axios.post('https://reqres.in/api/articles', article);
+    //     this.setState({ articleId: response.data.id });
+    // }
+
+   
+     
     handlerSubmit = async e =>{
-        e.preventDefault();
+        e.preventDefault()
+
+       
+       
+        
+        
+      
+        
         // console.log(urlGlobal,'ssssssssssssssssss');
         // let raw = await fetch(urlGlobal)
         
@@ -32,122 +78,136 @@ class Form extends React.Component {
             // await  console.log(ahmad,'ahmad77777777777777777777777777777777777777777777777')
           let url =  e.target.url.value ;
           let method =e.target.method.value ;
-          let body = e.target.body.value ;
-            // let ahmad =await superagent.get(urlGlobal)
-            console.log(url , method ,body , 'hdhddhhdhdhd')
-             
+          let body = e.target.body.value  ;
+          let token = e.target.token.value ;
+          let Auth =e.target.Auth.value ;
+         
+        //   setTimeout(() => {
            
-                superagent[`${method}`](url)
-               
-                .set('Accept', 'application/json')
-               
-                .send({body})
-                
-            
-            
+            if(method=== 'post'){
+                axios({
+                    method: `${method}`,
+                    url: url,
+                    data: body !=='' ? JSON.parse(body) :body = {},                    
+                    headers: Auth !== '' ? {
+                        'Authorization': ` ${Auth} ${token}` 
+                      } : {},
+                    
+                    })
+    
                 .then(data => {
-                    let myqury ={method:method, body:body,url:url}
-    
+                    // let myqury ={method:method, body:body,url:url}
+                    // axios.send(data)
                     console.log(data,'data superagent')
-                    try {
-                        this.props.handler(  data.headers,data.body,data.req.method , data.req.url,true);
+                    console.log(body,'sssssssssssssssssssssssssssssss');
+                    // try {
+                        this.props.handler(  data.headers,data.data,method , url,true);
+                       
     
-                        
-                    } catch (error) {
-                        this.props.handler("you have error",error.message,method,url)
-                    }
-                   
+                        // localStorage.setItem('save',JSON.stringify({method:method , url:url}))
+                    // } catch (error) {
+                    //     this.props.handler("you have error",error.message,method,url)
+                    // }
+                  
     
     
                 })
+                .catch (error => {
+                    console.log(error,'data superagent')
+                    this.props.handler("you have error",error.message,method,url)
+                })
 
-          
-            // if(method==='post'){
-                
-            //     superagent[`${method}`](url).send({body})
-            //     .set('X-API-Key', 'foobar')
-            //     .set('Accept', 'application/json')
-            //     .then(res => {
-            //        alert('yay got ' + JSON.stringify(res.body));
-            //     });
-            // }
-          
-            // if(method ==='post'){
-            //     console.log('hhsshhsh');
-            //     // let url = url;
+            }else{
 
-            //   let xhr = new XMLHttpRequest();
-            //     xhr.open("POST", url);
-
-            //      xhr.setRequestHeader("Content-Type", "application/json");
-
-            //          xhr.onreadystatechange = function () {
-            //     if (xhr.readyState === 4) {
-            //        console.log(xhr);
-            //         console.log(xhr.responseText);
-            //         let data= xhr.responseText;
-            //         this.props('null',data,method,url,true);
+                axios({
+                    method: `${method}`,
+                    url: url,
+                    // data: body !=='' ? JSON.parse(body) :body = {},                    
+                    headers: Auth !== '' ? {
+                        'Authorization': ` ${Auth} ${token}` 
+                      } : {},
+                    
+                    })
     
-            //    }};
+                .then(data => {
+                    
+                    console.log(data,'data superagent')
+                    console.log(body,'sssssssssssssssssssssssssssssss');
+                  
+                        this.props.handler(  data.headers,data.data,method , url,true);
 
-            // let data = `${body}`;
+                })
+                .catch (error => {
+                    console.log(error,'data superagent')
+                    this.props.handler("you have error",error.message,method,url)
+                }) 
 
-            //    xhr.send(data);
-            // }
+            }
+       
+        // }, 5000);
+
+          history.push({method:method , url:url})
+          save()
+      
           
-       
-            
-       
-           
+          
+             
+          
+             
+                
+               
 
-      
-      
-           
 
-           
+                
+               
+                
     }
-    // handlerURL = e =>{
-    //     urlGlobal = e.target.value;
-    //     console.log(urlGlobal,'url')
-    //     // this.setState({ url });
-    // }
-    // handlerSelect = e => {
-    //     e.preventDefault()
-    //   methodGlobal =e.target.value;
-    //     console.log(methodGlobal,'999999999999')
-    //     return methodGlobal;
-    // }
-    // handlerBtn =e =>{
-    //     e.preventDefault();
-    //     // let ahmad =this.state.url
-    //     // let ahamd2 =this.state.method;
-    //     // console.log(this.handlerSelect)
-        
-    //     this.setState({ method:methodGlobal ,url:urlGlobal });
-    //     console.log();
-       
-        
-    // }
    
 
 
 
 
     render(){
-        return (
-            <main>
+      
                
-                <form onSubmit ={this.handlerSubmit} >
+        return (
+            
+               
+            <main>
+
+            
+                <form onSubmit = { this.handlerSubmit } >
+      
 
                 <label >URL :</label> 
                 <input type='url' name='url' id='url' required/> 
+                 <button type="submit" id="btn" >Go</button> 
 
-              
-               <label >Body</label> 
-              
-                <textarea type="text" name="body" id="body" rows="5" cols="50" >   </textarea>
+              <div>
+                  <label > token </label> 
+              </div>
+                  <textarea type="text" name="token" id="token" rows="4" cols="30" >   </textarea>
 
-                 <button type="submit" id="btn">Go</button> 
+              <div>
+                 <label >Body</label> 
+              </div>
+                 <textarea type="text" name="body" id="body" rows="5" cols="50"  > enter json file  </textarea>
+
+               
+           
+
+
+
+
+
+                 <div>
+                 {/* <label>Basic Authorization</label> */}
+                <input type="radio" id="get"  name="Auth" value="Basic" hidden /> 
+
+                <label >Barear Authorization</label>
+                <input type="radio" id="put" name="Auth" value="Bearer"/>
+
+                 </div>
     
                 
                 <label>Get</label>
@@ -168,7 +228,8 @@ class Form extends React.Component {
             <button value="Put"  onClick ={this.handlerSelect}id="click"> Put</button> */}
 
                 </form>
-                <section>
+           
+                {/* <section>
                     {/* <span>{` ${this.state.method}    ` } </span> <span> { `${  this.state.url   } `} */}
 
                     {/* </span> */}
@@ -181,7 +242,7 @@ class Form extends React.Component {
                     </div> */}
 
                     
-                </section>
+                {/* </section>  */}
 
 
                 
