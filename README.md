@@ -2,14 +2,26 @@
 
 # Getting Started with Create React App
 
-# 
+#  
+[deploy on netlify](https://60d744da9f796ffe848b24c5--festive-sammet-777f98.netlify.app/) <br>
+
 [deploy on heroku](https://resty-prop-and-state.herokuapp.com/) <br>
 [pull request](https://github.com/ahmad-arman/RESTy-/pull/4) <br>
 [gh-pages](https://ahmad-arman.github.io/RESTy/)<br>
 
 
+
+
 ## UML
+* If 
+
+![uml](./if.png)
+
+* props 
 ![uml](./props_and_state.png)
+
+* basic 
+![uml](./base.png)
 
 ## How can test the app 
 
