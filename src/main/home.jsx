@@ -1,5 +1,5 @@
 
-import './App.scss';
+// import '../App/App.scss';
 import React from 'react';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
@@ -7,11 +7,8 @@ import Form from '../Form/form';
 import Results from '../Result/results';
 import If from '../if/if';
 import Else from '../else/else';
-import Loading from '../loading/loading'
+import Loading from '../loading/loading';
 import History from '../history/history';
-import Home from '../main/home';
-import { Route, Switch } from 'react-router-dom';
-import Help from '../help/help';
 
 import { BrowserRouter as Router, HashRouter, MemoryRouter } from 'react-router-dom';
 
@@ -20,7 +17,7 @@ import { BrowserRouter as Router, HashRouter, MemoryRouter } from 'react-router-
 
 
 
-class App extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     
@@ -59,30 +56,39 @@ class App extends React.Component {
 
   render(){
     return (
-      <Router>
+      <React.Fragment>
 
-       <Header />
+
                   
-         <Switch>
-             <Route exact path="/"  > <Home  />  </Route>
-             <Route exact path="/help"   > <Help /> </Route>
-             <Route exact path="/history"  > <History /> </Route>
-        </Switch>
+          
 
-     
+      
 
-     
-     
       
      
+      <Form  handler={this.handleForm} toggle={this.toggle}/>
+      {/* <Loading /> */}
+      <If condition ={this.state.flag}>
+     
+     <Results  test={this.state}  />
+     <Loading />
+    
+      </If>
+      <Else  condition ={this.state.flag}>
+ 
+      <Loading />
+
+        
+      </Else>
+      <History />
       
-      <Footer />
+      
 
 
      
      
    
-    </Router>
+    </React.Fragment>
 
     )
   }
@@ -91,4 +97,4 @@ class App extends React.Component {
 
 
 
-export default App;
+export default Home;
