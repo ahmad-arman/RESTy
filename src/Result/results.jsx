@@ -1,5 +1,5 @@
 import React from 'react';
-import JSONPretty from 'react-json-pretty';
+// import JSONPretty from 'react-json-pretty';
 import ReactJson from 'react-json-view'
 
 

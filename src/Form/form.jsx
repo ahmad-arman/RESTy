@@ -3,11 +3,11 @@ import React from 'react';
 import './form.scss';
 // import superagent from 'superagent';
 import axios from 'axios'; 
-import Loader from 'react-loader-spinner'
+// import Loader from 'react-loader-spinner'
 
-let methodGlobal='';
-let urlGlobal='';
-let error =''
+// let methodGlobal='';
+// let urlGlobal='';
+// let error =''
 
 let history = [];
 

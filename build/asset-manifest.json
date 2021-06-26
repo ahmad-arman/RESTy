@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.css": "/RESTy/static/css/main.5240e650.chunk.css",
-    "main.js": "/RESTy/static/js/main.79249031.chunk.js",
-    "main.js.map": "/RESTy/static/js/main.79249031.chunk.js.map",
+    "main.css": "/RESTy/static/css/main.8dc16d8b.chunk.css",
+    "main.js": "/RESTy/static/js/main.add39085.chunk.js",
+    "main.js.map": "/RESTy/static/js/main.add39085.chunk.js.map",
     "runtime-main.js": "/RESTy/static/js/runtime-main.983b572b.js",
     "runtime-main.js.map": "/RESTy/static/js/runtime-main.983b572b.js.map",
-    "static/js/2.a9358964.chunk.js": "/RESTy/static/js/2.a9358964.chunk.js",
-    "static/js/2.a9358964.chunk.js.map": "/RESTy/static/js/2.a9358964.chunk.js.map",
+    "static/css/2.ab75b8d7.chunk.css": "/RESTy/static/css/2.ab75b8d7.chunk.css",
+    "static/js/2.255546c9.chunk.js": "/RESTy/static/js/2.255546c9.chunk.js",
+    "static/js/2.255546c9.chunk.js.map": "/RESTy/static/js/2.255546c9.chunk.js.map",
     "index.html": "/RESTy/index.html",
-    "static/css/main.5240e650.chunk.css.map": "/RESTy/static/css/main.5240e650.chunk.css.map",
-    "static/js/2.a9358964.chunk.js.LICENSE.txt": "/RESTy/static/js/2.a9358964.chunk.js.LICENSE.txt"
+    "static/css/2.ab75b8d7.chunk.css.map": "/RESTy/static/css/2.ab75b8d7.chunk.css.map",
+    "static/css/main.8dc16d8b.chunk.css.map": "/RESTy/static/css/main.8dc16d8b.chunk.css.map",
+    "static/js/2.255546c9.chunk.js.LICENSE.txt": "/RESTy/static/js/2.255546c9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.983b572b.js",
-    "static/js/2.a9358964.chunk.js",
-    "static/css/main.5240e650.chunk.css",
-    "static/js/main.79249031.chunk.js"
+    "static/css/2.ab75b8d7.chunk.css",
+    "static/js/2.255546c9.chunk.js",
+    "static/css/main.8dc16d8b.chunk.css",
+    "static/js/main.add39085.chunk.js"
   ]
 }

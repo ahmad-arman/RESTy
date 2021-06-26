@@ -1,6 +1,6 @@
 
 import './App.scss';
-import React , { useEffect } from 'react';
+import React from 'react';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import Form from '../Form/form';
@@ -11,7 +11,7 @@ import Loading from '../loading/loading'
 import History from '../history/history';
 
 
-import Loader from "react-loader-spinner";
+
 
 
 
